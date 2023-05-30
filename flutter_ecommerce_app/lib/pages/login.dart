@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     const mainBgColor = Color(0xfff9f9f9);
     const white = Color(0xffffffff);
-    
+
     return Scaffold(
         appBar: AppBar(
             backgroundColor: mainBgColor, toolbarHeight: 30, elevation: 0),
@@ -95,11 +95,17 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text(
-                    "Forgot your password ? ",
-                    style: TextStyle(fontSize: 15.0, color: Colors.black),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context,
+                          '/forgotpassword'); // Redirection vers la page "Forgot Password"
+                    },
+                    child: const Text(
+                      "Forgot your password ? ",
+                      style: TextStyle(fontSize: 15.0, color: Colors.black),
+                    ),
                   ),
-                  redRightArrow
+                  redRightArrow,
                 ],
               ),
               Container(

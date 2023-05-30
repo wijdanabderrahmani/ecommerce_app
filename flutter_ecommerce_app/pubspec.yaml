@@ -71,6 +71,12 @@ flutter:
     - assets/images/png/favorite.png
     - assets/images/png/star.png
     - assets/images/png/starFilled.png
+    - assets/images/png/visual.png
+    - assets/images/png/searchpic.png
+    - assets/images/png/search_bottom.png
+    - assets/images/png/search.png
+    - assets/images/png/crop.png
+    - assets/images/png/searchbutton.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

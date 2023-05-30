@@ -93,24 +93,32 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        'Forgot your password?',
-                        style: TextStyle(fontSize: 15.0, color: Colors.black),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      redRightArrow,
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context,
+                          '/loginpage'); // Redirection vers la page "Forgot Password"
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Text(
+                          'Already have an account ?',
+                          style: TextStyle(fontSize: 15.0, color: Colors.black),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        redRightArrow,
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 40),
                   Container(
                       width: double.infinity,
                       child: FilledButton(
-                          onPressed: null,
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/home');
+                          },
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll<Color>(Colors.red)),

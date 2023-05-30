@@ -145,7 +145,13 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(width: 3),
                                       starFilled,
                                       const SizedBox(width: 3),
-                                      star
+                                      starFilled,
+                                      const SizedBox(width: 3),
+                                      const Text('(10)',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color.fromRGBO(
+                                                  189, 189, 189, 1))),
                                     ],
                                   ),
                                   const Text('Dorothy Perkins',
@@ -209,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                                     height: 24,
                                     child: const Align(
                                         alignment: Alignment.center,
-                                        child: Text("-20%",
+                                        child: Text("-15%",
                                             style: TextStyle(
                                                 fontSize: 12, color: white))),
                                   ),
@@ -229,16 +235,22 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(width: 3),
                                       starFilled,
                                       const SizedBox(width: 3),
-                                      star
+                                      starFilled,
+                                      const SizedBox(width: 3),
+                                      const Text('(10)',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color.fromRGBO(
+                                                  189, 189, 189, 1))),
                                     ],
                                   ),
-                                  const Text('Dorothy Perkins',
+                                  const Text('Sitlly',
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: Color.fromRGBO(
                                               189, 189, 189, 1))),
                                   const Text(
-                                    'Evening dress',
+                                    'Sport Dress',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -246,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                                   const Row(
                                     children: [
                                       Text(
-                                        "15\$",
+                                        "22\$",
                                         style: TextStyle(
                                             color: Color.fromRGBO(
                                                 189, 189, 189, 1),
@@ -255,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       SizedBox(width: 7),
                                       Text(
-                                        "12\$",
+                                        "15\$",
                                         style: TextStyle(color: Colors.red),
                                       )
                                     ],
