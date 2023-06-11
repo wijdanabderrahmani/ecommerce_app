@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Sale',
+                      'New',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
