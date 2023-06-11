@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,814 +7,389 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final Widget MainImage = Image.asset(
-    'assets/images/png/main-home-image.png',
-    width: double.infinity,
-    fit: BoxFit.fill,
-    // semanticsLabel: 'Retour en arrière',
-  );
+  int _current = 0;
+  final List<String> imgList = [
+    'assets/images/png/image1.png',
+    'assets/images/png/image2.png',
+    'assets/images/png/image3.png',
+    'assets/images/png/image1.png',
+    'assets/images/png/image2.png',
+    'assets/images/png/image4.png',
+  ];
 
-  final Widget itemListImage1 = Image.asset(
-    'assets/images/png/item-list-image.png',
-    // semanticsLabel: 'Retour en arrière',
-    fit: BoxFit.scaleDown,
-  );
-
-  final Widget itemListImage2 = Image.asset(
-    'assets/images/png/item-list-image2.png',
-    // semanticsLabel: 'Retour en arrière',
-    fit: BoxFit.scaleDown,
-  );
-
-  final Widget favorite = Image.asset(
-    'assets/images/png/favorite.png',
-    width: 10,
-  );
-
-  final Widget star = Image.asset(
-    'assets/images/png/star.png',
-    width: 12,
-  );
-
-  final Widget starFilled = Image.asset(
-    'assets/images/png/starFilled.png',
-    width: 12,
-  );
-
+  @override
   Widget build(BuildContext context) {
-    const white = Color(0xffffffff);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 20),
-            height: 200,
-            width: double.infinity,
-            color: Colors.amber,
-            child: Stack(children: [
-              MainImage,
-              const Positioned(
-                bottom: 10.0,
-                left: 10.0,
-                child: Text('Street Clothes',
-                    style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
-              )
-            ]),
+      body: Column(
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              Container(
+                height: 260,
+                width: double.infinity,
+                child: Image.asset(
+                  'assets/images/png/main-home-image.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                bottom: 20,
+                left: 20,
+                child: Text(
+                  'Street Clothes',
+                  style: TextStyle(
+                    fontFamily: 'Metropolis',
+                    fontSize: 50,
+                    color: Colors.white,
+                    height: 1,
+                    letterSpacing: 0,
+                  ),
+                ),
+              ),
+            ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Sale',
-                        style: TextStyle(
-                            fontSize: 35, fontWeight: FontWeight.bold)),
-                    Text('view all', style: TextStyle(fontSize: 12))
+                    Text(
+                      'Sale',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5.0), // Add this
+                    Text(
+                      'Super summer size',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
                   ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  child: const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text('Super summer sale',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromRGBO(189, 189, 189, 1))),
+                Text(
+                  'View All',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
                   ),
-                ),
-                SizedBox(
-                  height: 300,
-                  child: ListView(
-                      physics: const ClampingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage1,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-20%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      const Text('(10)',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color.fromRGBO(
-                                                  189, 189, 189, 1))),
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage2,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-15%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      const Text('(10)',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color.fromRGBO(
-                                                  189, 189, 189, 1))),
-                                    ],
-                                  ),
-                                  const Text('Sitlly',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Sport Dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "22\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage1,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-20%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      star
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage2,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-15%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      star
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                      ]),
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('New',
-                        style: TextStyle(
-                            fontSize: 35, fontWeight: FontWeight.bold)),
-                    Text('view all', style: TextStyle(fontSize: 12))
-                  ],
-                ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  child: const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text('You\'ve never seen it before',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromRGBO(189, 189, 189, 1))),
-                  ),
-                ),
-                SizedBox(
-                  height: 300,
-                  child: ListView(
-                      physics: const ClampingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage1,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-20%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      star
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage2,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-20%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      star
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage1,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-20%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      star
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: Stack(clipBehavior: Clip.none, children: [
-                                itemListImage2,
-                                Positioned(
-                                  bottom: -20.0,
-                                  right: 0.0,
-                                  child: Container(
-                                      padding: const EdgeInsets.all(9),
-                                      decoration: const BoxDecoration(
-                                          color: white, shape: BoxShape.circle),
-                                      width: 35,
-                                      height: 35,
-                                      child: favorite),
-                                ),
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.red,
-                                    ),
-                                    width: 40,
-                                    height: 24,
-                                    child: const Align(
-                                        alignment: Alignment.center,
-                                        child: Text("-15%",
-                                            style: TextStyle(
-                                                fontSize: 12, color: white))),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      starFilled,
-                                      const SizedBox(width: 3),
-                                      star
-                                    ],
-                                  ),
-                                  const Text('Dorothy Perkins',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color.fromRGBO(
-                                              189, 189, 189, 1))),
-                                  const Text(
-                                    'Evening dress',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        "15\$",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                189, 189, 189, 1),
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "12\$",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ],
-                        ),
-                      ]),
                 ),
               ],
             ),
           ),
-        ]),
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 276, // This is the height of your images
+              viewportFraction: 0.333, // Display 3 items at a time
+              onPageChanged: (index, reason) {
+                setState(() {
+                  _current = index;
+                });
+              },
+            ),
+            items: imgList
+                .map((item) => Stack(
+                      children: <Widget>[
+                        Container(
+                          width: 190.0, // specify width
+                          height: 276.0, // specify height
+                          child: Center(
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit
+                                  .fill, // Make sure images fill their container
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 35, // adjust the distance from the bottom
+                          right: 10, // adjust the distance from the right
+                          child: Container(
+                            width: 35.0, // adjust the size of the circle
+                            height: 35.0, // adjust the size of the circle
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.favorite,
+                                    color: Colors.grey,
+                                    size: 28.0,
+                                  ),
+                                  Icon(
+                                    Icons.favorite,
+                                    color: Colors.white,
+                                    size: 23.0,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 235, // adjust the distance from the bottom
+                          child: Container(
+                            width:
+                                190.0, // specify width same as image container
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 10.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ...List.generate(5, (index) {
+                                        return Icon(
+                                          Icons.star,
+                                          color: Color.fromARGB(
+                                              255, 248, 213, 109),
+                                          size: 20,
+                                        );
+                                      }),
+                                      Text(
+                                        ' (10)', // Add rating text next to stars
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    'Dorothy Perkins',
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Evening Dress',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Text(
+                                    '175 euros',
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ))
+                .toList(),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Sale',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5.0), // Add this
+                    Text(
+                      'Super summer size',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  'View All',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 276, // This is the height of your images
+              viewportFraction: 0.333, // Display 3 items at a time
+              onPageChanged: (index, reason) {
+                setState(() {
+                  _current = index;
+                });
+              },
+            ),
+            items: imgList
+                .map((item) => Stack(
+                      children: <Widget>[
+                        Container(
+                          width: 190.0, // specify width
+                          height: 276.0, // specify height
+                          child: Center(
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit
+                                  .fill, // Make sure images fill their container
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 35, // adjust the distance from the bottom
+                          right: 10, // adjust the distance from the right
+                          child: Container(
+                            width: 35.0, // adjust the size of the circle
+                            height: 35.0, // adjust the size of the circle
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.favorite,
+                                    color: Colors.grey,
+                                    size: 28.0,
+                                  ),
+                                  Icon(
+                                    Icons.favorite,
+                                    color: Colors.white,
+                                    size: 23.0,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 235, // adjust the distance from the bottom
+                          child: Container(
+                            width:
+                                190.0, // specify width same as image container
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 10.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ...List.generate(5, (index) {
+                                        return Icon(
+                                          Icons.star,
+                                          color: Color.fromARGB(
+                                              255, 248, 213, 109),
+                                          size: 20,
+                                        );
+                                      }),
+                                      Text(
+                                        ' (10)', // Add rating text next to stars
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    'Dorothy Perkins',
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Evening Dress',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ))
+                .toList(),
+          ),
+          Expanded(
+            child: Container(),
+          ),
+          Container(
+            height: 100,
+            color: Colors.white,
+            child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                double responsiveWidth = constraints.maxWidth / 5;
+                return ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: responsiveWidth,
+                      child: Center(
+                        child: Image.asset('assets/images/png/home_button.png',
+                            width: 50.0),
+                      ),
+                    ),
+                    Container(
+                      width: responsiveWidth,
+                      child: Center(
+                        child: Image.asset('assets/images/png/shop_button.png',
+                            width: 50.0),
+                      ),
+                    ),
+                    Container(
+                      width: responsiveWidth,
+                      child: Center(
+                        child: Image.asset('assets/images/png/bag_button.png',
+                            width: 50.0),
+                      ),
+                    ),
+                    Container(
+                      width: responsiveWidth,
+                      child: Center(
+                        child: Image.asset(
+                            'assets/images/png/favorites_button.png',
+                            width: 50.0),
+                      ),
+                    ),
+                    Container(
+                      width: responsiveWidth,
+                      child: Center(
+                        child: Image.asset(
+                            'assets/images/png/profile_button.png',
+                            width: 50.0),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
