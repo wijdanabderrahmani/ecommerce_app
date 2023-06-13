@@ -16,6 +16,14 @@ class _HomePageState extends State<HomePage> {
     'assets/images/png/image2.png',
     'assets/images/png/image4.png',
   ];
+  final List<String> imgList2 = [
+    'assets/images/png/model1.png',
+    'assets/images/png/model2.png',
+    'assets/images/png/model3.png',
+    'assets/images/png/model1.png',
+    'assets/images/png/model2.png',
+    'assets/images/png/model3.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            items: imgList
+            items: imgList2
                 .map((item) => Stack(
                       children: <Widget>[
                         Container(
